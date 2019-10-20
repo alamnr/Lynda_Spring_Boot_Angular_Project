@@ -1,48 +1,54 @@
 package com.spring.landon.model.response;
 
-import com.spring.landon.model.Links;
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import serializerNDeseriaizer.LocalDateSerializer;
 
 public class ReservationResponse {
 
 	private Long id;
-	private Integer price;
-	private Integer roomNumber;
-	private Links links;
 
+	@JsonSerialize(using = LocalDateSerializer.class)
+	private LocalDate checkin;
+
+	@JsonSerialize(using = LocalDateSerializer.class)
+	private LocalDate checkout;
 
 	public ReservationResponse() {
 		super();
 	}
-	public ReservationResponse(Integer price, Integer roomNumber) {
+
+	public ReservationResponse(Long id, LocalDate checkin, LocalDate checkout) {
 		super();
-		this.price = price;
-		this.roomNumber = roomNumber;
+		this.id = id;
+		this.checkin = checkin;
+		this.checkout = checkout;
 	}
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Integer getPrice() {
-		return price;
-	}
-	public void setPrice(Integer price) {
-		this.price = price;
-	}
-	public Integer getRoomNumber() {
-		return roomNumber;
-	}
-	public void setRoomNumber(Integer roomNumber) {
-		this.roomNumber = roomNumber;
-	}
-	public Links getLinks() {
-		return links;
-	}
-	public void setLinks(Links links) {
-		this.links = links;
+
+	public LocalDate getCheckin() {
+		return checkin;
 	}
 
+	public void setCheckin(LocalDate checkin) {
+		this.checkin = checkin;
+	}
 
+	public LocalDate getCheckout() {
+		return checkout;
+	}
+
+	public void setCheckout(LocalDate checkout) {
+		this.checkout = checkout;
+	}
 
 }
